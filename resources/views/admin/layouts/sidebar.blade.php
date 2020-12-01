@@ -15,6 +15,7 @@
         </div>
         <div class="info">
           <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+          <p class="text-white" style="font-size: 12px;">{{ Auth::user()->roles }}</p>
         </div>
       </div>
 
@@ -23,9 +24,9 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          
+           
           <li class="nav-item">
-            <a href="{{ asset('/home') }}" class="nav-link">
+            <a href="{{ route('appointment.index') }}" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Home
@@ -33,9 +34,19 @@
               </p>
             </a> 
           </li>
-
+ @if(Auth::user()->roles == 'admin')
+          <li class="nav-item">
+            <a href="{{ route('doctors.index') }}" class="nav-link"> 
+              <i class="nav-icon fas fa-users"></i> 
+              <p>
+                Doctors
+                
+              </p>
+            </a> 
+          </li>
+  @endif
        <li class="nav-item">
-            <a href="{{ route('my-files') }}" class="nav-link">
+            <a href="{{ route('my-files.index') }}" class="nav-link">
               <i class="nav-icon fas fa-file"></i>
               <p>
                 My files
@@ -43,7 +54,7 @@
             </a>
           </li>
            <li class="nav-item">
-               <a href="{{ route('chat') }}" class="nav-link">
+               <a href="{{ route('chat.index') }}" class="nav-link">
               <i class="nav-icon fas fa-comments"></i>
               <p>
                 Chat
@@ -52,7 +63,7 @@
           </li>
 
               <li class="nav-item">
-               <a href="{{ route('video-call') }}" class="nav-link">
+               <a href="{{ route('video-call.index') }}" class="nav-link">
               <i class="nav-icon fas fa-video"></i>
               <p>
                 Video Call
@@ -62,7 +73,7 @@
           
 
           <li class="nav-item">
-               <a href="{{ route('my-account') }}" class="nav-link">
+               <a href="{{ route('my-account.index') }}" class="nav-link">
               <i class="nav-icon fas fa-user-circle"></i>
               <p>
                 My Account
