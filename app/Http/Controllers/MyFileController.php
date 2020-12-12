@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\MyFile;
+use PDF;
 use Illuminate\Http\Request;
 
 class MyFileController extends Controller
@@ -14,7 +15,8 @@ class MyFileController extends Controller
      */
     public function index()
     {
-     return view('admin.pages.my-files');
+        $myfiles = MyFile::all();
+     return view('admin.pages.my-files', compact('myfiles'));
     }
 
     /**
@@ -35,7 +37,15 @@ class MyFileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $myfile = new MyFile;
+
+        $myfile->file_name = $request->file_name;
+        $myfile->name = $request->name;
+        $myfile->email = $request->email;
+
+        $myfile->save();
+
+        return redirect()->route('my-files.index');
     }
 
     /**
@@ -78,8 +88,16 @@ class MyFileController extends Controller
      * @param  \App\MyFile  $myFile
      * @return \Illuminate\Http\Response
      */
-    public function destroy(MyFile $myFile)
+    public function destroy($id)
     {
-        //
+        MyFile::where('id',$id)->delete();
+        return redirect()->back();
+    }
+
+    public function pdfgenerate($id)
+    {
+        $myfile = MyFile::find($id);
+        $pdf = PDF::loadView('admin.download',compact('myfile'));
+        return $pdf->stream('my_file.pdf');
     }
 }

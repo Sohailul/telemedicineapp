@@ -15,11 +15,13 @@ Route::get('/', function () {
     return view('auth.login'); 
 });
 
+Route::get('/download/{id}', 'MyFileController@pdfgenerate')->name('download');
+
 /*Route::resource('doctors','DoctorController');*/
 
 Route::resource('appointment', 'AppointmentController');
 Route::resource('doctors', 'DoctorController'); 
-Route::resource('my-files', 'MyFileController'); 
+Route::resource('my-files', 'MyFileController');
 
 Route::resource('chat', 'ChatController'); 
 Route::resource('video-call', 'VideoCallController'); 

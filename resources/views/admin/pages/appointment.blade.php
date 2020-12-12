@@ -80,11 +80,9 @@
   </div>
   <div class="form-group">
     <select name="appointment" class="form-control">
-
-      <option value="Faisal Khan">Faisal Khan</option>
-      <option value="Jubair Ahmed">Jubair Ahmed</option>
-      <option value="Sohailul Alam">Sohailul Alam</option>
-      <option value="Nabil">Nabil</option>
+      @foreach( $doctors as $doctor )
+      <option value="{{ $doctor->doctor_name}}">{{ $doctor->doctor_name }}</option>
+      @endforeach
 
     </select>
   </div>
