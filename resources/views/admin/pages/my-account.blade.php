@@ -76,25 +76,27 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-body">
-              <form action="" method="POST">
-                {{ csrf_field() }}
-              <div class="form-group">   
-                <input type="text" class="form-control" name="name" value="" placeholder="Name">
+              <form action="{{ route('my-account.update', Auth::user()->id) }}" method="POST">
+                @csrf
+                {{method_field('PATCH')}}
+              <div class="form-group">    
+                <input type="text" class="form-control" name="name" value="{{ Auth::user()->name }}" placeholder="Name">
+                <input type="hidden" class="form-control" name="id" value="{{ Auth::user()->id }}"> 
               </div>
               <div class="form-group">   
-                <input type="email" class="form-control" name="email" value="" placeholder="Email" readonly>
+                <input type="email" class="form-control" name="email" value="{{ Auth::user()->email }}" placeholder="Email" readonly>
               </div>
               <div class="form-group">   
-                <input type="text" class="form-control" name="roles" value="" placeholder="Roles" readonly>
+                <input type="text" class="form-control" name="roles" value="{{ Auth::user()->roles }}" placeholder="Roles" readonly>
               </div>
               <div class="form-group">   
-                <input type="password" class="form-control" name="password" value="" placeholder="Password">
+                <input type="password" class="form-control" name="password" value="{{ Auth::user()->password }}" placeholder="Password">
               </div>
               <div class="form-group">   
-                <input type="text" class="form-control" name="phone" value="" placeholder="Phone">
+                <input type="text" class="form-control" name="phone" value="{{ Auth::user()->phone }}" placeholder="Phone">
               </div>
-              <div class="form-group">   
-                <input type="text" class="form-control" name="address" value="" placeholder="Address">
+              <div class="form-group">    
+                <input type="text" class="form-control" name="address" value="{{ Auth::user()->address }}" placeholder="Address">
               </div>
               
               <button type="submit" class="btn btn-primary float-sm-right">Update</button>

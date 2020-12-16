@@ -13,7 +13,7 @@
           <div class="col-sm-6">
             <h1>File Uploads</h1>
           </div>
-            @if(Auth::user()->roles == 'admin' || Auth::user()->roles == 'doctor')
+            @if(Auth::user()->roles == 'admin' || Auth::user()->roles == 'patient')
           <div class="col-sm-6">
             <!-- <form action="" method="post">
               {{ csrf_field() }} -->
