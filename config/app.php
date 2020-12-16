@@ -162,6 +162,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         \Chatify\ChatifyServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
         
 
         /*
@@ -230,6 +231,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'Chatify' => Chatify\Facades\ChatifyMessenger::class,
+        'Image' => Intervention\Image\Facades\Image::class,
 
 
     ],

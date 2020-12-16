@@ -60,7 +60,7 @@
                                                 event.preventDefault();
                                                     }" class="btn btn-danger">
                   <i class="fa fa-times"></i></a></td>
-                <td><a href="" class="btn btn-success"><i class="fa fa-comments"></i></a></td>
+                <td><a href="{{ route('chatify') }}" class="btn btn-success"><i class="fa fa-comments"></i></a></td>
                 <td><a href="" class="btn btn-danger"><i class="fa fa-video"></i></a></td>
               </tr>
               @endforeach

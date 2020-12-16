@@ -52,7 +52,8 @@
             <tbody>
               @foreach($myfiles as $myfile)
               <tr>
-                <td>{{ $myfile->file_name }}</td>
+                <!-- <td>{{ $myfile->image }}</td>   -->
+                <td><img src="{{ asset($myfile->image) }}" alt="" width="50px" height="40px"></td>  
                 <td>{{ $myfile->email }}</td>
                 <td><a href="{{ route('download',['id'=>$myfile->id]) }}" class="btn btn-primary"><i class="fa fa-download"></i></a></td> 
                 <td> 
@@ -123,7 +124,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
-        <form action="" method="POST">
+        <form action="" method="POST" enctype="multipart/form-data">
           {{ csrf_field() }}
         <div class="form-group">   
           <input type="text" class="form-control" name="name" placeholder="Name" value="{{Auth::user()->name}}" readonly>
@@ -132,7 +133,7 @@
           <input type="email" class="form-control" name="email" placeholder="Email" value="{{Auth::user()->email}}" readonly>
         </div>
         <div class="form-group">   
-          <input type="file" class="form-control-file" name="file_name">
+          <input type="file" class="form-control-file" name="image">
         </div>
         <button type="submit" class="btn btn-primary float-sm-right">Save</button>
       </form>
