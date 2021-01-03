@@ -16,7 +16,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Blank Page</li>
+              <li class="breadcrumb-item active">Video Call</li>
             </ol>
           </div>
         </div>
@@ -29,7 +29,7 @@
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Title</h3> 
+          <h3 class="card-title">Make Video Call</h3>
 
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -38,18 +38,31 @@
               <i class="fas fa-times"></i></button>
           </div>
         </div>
-        <div class="card-body">
-          Start creating your amazing application!
+        <div class="card-body text-center">
+          <!-- <a href="#" class="btn btn-danger" style="font-size: 50px;"><i class="fa fa-video"></i></a> -->
+          <video id="vidDisplay" autoplay="true">
+            
+          </video> 
         </div>
         <!-- /.card-body -->
-        <div class="card-footer">
-          Footer
-        </div>
-        <!-- /.card-footer-->
       </div>
       <!-- /.card -->
 
     </section>
     <!-- /.content -->
   </div> 
+
+  <script type="text/javascript">
+    var video = document.querySelector("#vidDisplay");
+    
+    if (navigator.mediaDevices.getUserMedia) {
+  navigator.mediaDevices.getUserMedia({ video: true })
+    .then(function (stream) {
+      video.srcObject = stream;
+    })
+    .catch(function (err0r) {
+      console.log("Something went wrong!");
+    });
+}
+  </script>
 @endsection
